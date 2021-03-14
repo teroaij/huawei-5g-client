@@ -1,0 +1,17 @@
+autopep8==1.5.5
+certifi==2020.12.5
+chardet==4.0.0
+click==7.1.2
+dicttoxml==1.7.4
+dparse==0.5.1
+huawei-lte-api==1.4.17
+idna==2.10
+packaging==20.9
+pycodestyle==2.6.0
+pyparsing==2.4.7
+PyYAML==5.4.1
+requests==2.25.1
+safety==1.10.3
+toml==0.10.2
+urllib3==1.26.3
+xmltodict==0.12.0
