@@ -14,6 +14,10 @@ PARSER.add_argument("--signal", dest="signal",
                     action="store_true", help="Signal status.", required=False)
 PARSER.add_argument("--info", dest="info",
                     action="store_true", help="Device info.", required=False)
+PARSER.add_argument("--bands", dest="bands",
+                    action="store_true",
+                    help="Lock router to LTE bands supplied here.",
+                    required=False)
 ARGS = PARSER.parse_args()
 
 URL = "http://admin:" + ARGS.password + "@" + ARGS.target_address
@@ -30,3 +34,7 @@ if ARGS.info:
     print("Device information:")
     print(json.dumps(CLIENT.device.information(), indent=5))
     print("")
+
+# Check if we are going to change the bands
+if ARGS.bands:
+    print("Changing LTE bands.....")
