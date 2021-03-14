@@ -24,7 +24,7 @@ if ARGS.signal:
     print("Signal status:")
     print(json.dumps(CLIENT.device.signal(), indent=5))
     print("")
-elif ARGS.info:
+if ARGS.info:
     print("Device information:")
     print(json.dumps(CLIENT.device.information(), indent=5))
     print("")
