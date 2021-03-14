@@ -2,7 +2,7 @@
 Client wrapper for huawei-lte-api for basic control of a 5g router.
 """
 import argparse
-import json as json
+import json
 
 from huawei_lte_api.Client import Client
 from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
@@ -42,8 +42,24 @@ if ARGS.info:
 # Check if we are going to change the bands
 if ARGS.bands:
     print("Changing LTE bands.....")
+    # Set band
+    try :
+        networkband = "3FFFFFFF"
+        networkmode = "00"
+        lteband="3FFFFFFF"
+        CLIENT.net.set_net_mode(lteband, networkband, networkmode) 
+
+    except Exception as e :
+        print("Connection error - " + str(e))
+        exit()
 
 # Check if we should reboot the router
 if ARGS.reboot:
     print("Rebooting the router.....")
-    CLIENT.device.reboot()
+    try :
+        CLIENT.device.reboot()
+
+    except Exception as e :
+        print("Connection error - " + str(e))
+        exit()
+    
