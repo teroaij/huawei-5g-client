@@ -1,5 +1,6 @@
 import os
 import argparse
+import json as json
 
 from huawei_lte_api.Client import Client
 from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
@@ -12,12 +13,15 @@ args = parser.parse_args()
 
 url = "http://admin:" + args.password + "@" + args.target_address
 
-print (url)
 connection = AuthorizedConnection(url)
 client = Client(connection)
 
-print(client.device.signal())  # Can be accessed without authorization
-print(client.device.information())  # Needs valid authorization, will throw exception if invalid credentials are passed in URL
+print("Signal status:")
+print(json.dumps(client.device.signal(), indent=5))  # Can be accessed without authorization
+print("")
+
+print("Device information:")
+print(json.dumps(client.device.information(), indent=5))  # Needs valid authorization, will throw exception if invalid credentials are passed in URL
 
 
 # For more API calls just look on code in the huawei_lte_api/api folder, there is no separate DOC yet
