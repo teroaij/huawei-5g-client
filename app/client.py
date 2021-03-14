@@ -18,6 +18,10 @@ PARSER.add_argument("--bands", dest="bands",
                     action="store_true",
                     help="Lock router to LTE bands supplied here.",
                     required=False)
+PARSER.add_argument("--reboot", dest="reboot",
+                    action="store_true",
+                    help="Reboot router.",
+                    required=False)
 ARGS = PARSER.parse_args()
 
 URL = "http://admin:" + ARGS.password + "@" + ARGS.target_address
@@ -38,3 +42,9 @@ if ARGS.info:
 # Check if we are going to change the bands
 if ARGS.bands:
     print("Changing LTE bands.....")
+
+# Check if we should reboot the router
+if ARGS.reboot:
+    print("Rebooting the router.....")
+    CLIENT.device.reboot()
+
