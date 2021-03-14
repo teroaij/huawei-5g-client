@@ -47,5 +47,3 @@ if ARGS.bands:
 if ARGS.reboot:
     print("Rebooting the router.....")
     CLIENT.device.reboot()
-
-
