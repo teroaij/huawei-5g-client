@@ -17,11 +17,12 @@ connection = AuthorizedConnection(url)
 client = Client(connection)
 
 print("Signal status:")
-print(json.dumps(client.device.signal(), indent=5))  # Can be accessed without authorization
+print(json.dumps(client.device.signal(), indent=5))
 print("")
 
 print("Device information:")
-print(json.dumps(client.device.information(), indent=5))  # Needs valid authorization, will throw exception if invalid credentials are passed in URL
+print(json.dumps(client.device.information(), indent=5))
 
 
-# For more API calls just look on code in the huawei_lte_api/api folder, there is no separate DOC yet
+# For more API calls just look on code in the huawei_lte_api/api folder,
+# there is no separate DOC yet
