@@ -43,23 +43,22 @@ if ARGS.info:
 if ARGS.bands:
     print("Changing LTE bands.....")
     # Set band
-    try :
+    try:
         networkband = "3FFFFFFF"
         networkmode = "00"
-        lteband="3FFFFFFF"
-        CLIENT.net.set_net_mode(lteband, networkband, networkmode) 
+        lteband = "3FFFFFFF"
+        CLIENT.net.set_net_mode(lteband, networkband, networkmode)
 
-    except Exception as e :
+    except Exception as e:
         print("Connection error - " + str(e))
         exit()
 
 # Check if we should reboot the router
 if ARGS.reboot:
     print("Rebooting the router.....")
-    try :
+    try:
         CLIENT.device.reboot()
 
-    except Exception as e :
+    except Exception as e:
         print("Connection error - " + str(e))
         exit()
-    
