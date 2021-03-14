@@ -1,30 +1,30 @@
-import os
+"""
+Client wrapper for huawei-lte-api for basic control of a 5g router.
+"""
 import argparse
 import json as json
 
 from huawei_lte_api.Client import Client
 from huawei_lte_api.AuthorizedConnection import AuthorizedConnection
-from huawei_lte_api.Connection import Connection
 
-parser = argparse.ArgumentParser("client.py")
-parser.add_argument("target_address", help="IP address of the Huawei router")
-parser.add_argument("password", help="Admin user password.")
-parser.add_argument("--signal", dest="signal", action="store_true", help="Signal status.", required=False)
-parser.add_argument("--info", dest="info", action="store_true", help="Device info.", required=False)
-args = parser.parse_args()
+PARSER = argparse.ArgumentParser("client.py")
+PARSER.add_argument("target_address", help="IP address of the Huawei router")
+PARSER.add_argument("password", help="Admin user password.")
+PARSER.add_argument("--signal", dest="signal", action="store_true", help="Signal status.", required=False)
+PARSER.add_argument("--info", dest="info", action="store_true", help="Device info.", required=False)
+ARGS = PARSER.parse_args()
 
-url = "http://admin:" + args.password + "@" + args.target_address
+URL = "http://admin:" + ARGS.password + "@" + ARGS.target_address
 
-connection = AuthorizedConnection(url)
-client = Client(connection)
+CONNECTION = AuthorizedConnection(URL)
+CLIENT = Client(CONNECTION)
 
 # Check which info to display
-if args.signal:
+if ARGS.signal:
     print("Signal status:")
-    print(json.dumps(client.device.signal(), indent=5))
+    print(json.dumps(CLIENT.device.signal(), indent=5))
     print("")
-elif args.info:
+elif ARGS.info:
     print("Device information:")
-    print(json.dumps(client.device.information(), indent=5))
+    print(json.dumps(CLIENT.device.information(), indent=5))
     print("")
-
