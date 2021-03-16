@@ -49,10 +49,10 @@ if ARGS.bands:
         #lteband = "3FFFFFFF" #any
         lteband = "8080000" #700 + 800MHz
         CLIENT.net.set_net_mode(lteband, networkband, networkmode)
-
     except Exception as e:
         print("Connection error - " + str(e))
         exit()
+    exit()
 
 # Check if we should reboot the router
 if ARGS.reboot:
